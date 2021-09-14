@@ -1,6 +1,6 @@
 import csv
 # import os
-# import itertools
+# from itertools import combinations
 
 
 
@@ -25,8 +25,14 @@ def data_set_csv():
 	        wallet.append(Action(row[0], int(row[1]), int(row[2])))
     return wallet      
 
-def brute_force(wallet, MAX_INEST):
+def brute_force(wallet, MAX_INVEST):
     """this function will try to find the best invest """
+    # creation de toute les combinaisons d'actions
+    
+    # choix de la combinaisons <= à 500euro la plus proche (investissement)
+    # calcul du gain total de chaques combinaisons
+    
+    
     pass
 
 
@@ -38,7 +44,7 @@ def main():
     # enregistrer les gains pour chaque actions
     wallet = data_set_csv()
     for wal in wallet:
-        print(wal)
+        print(wal.gain)
     # tester chaques combinaisons possible d'action pour un investisement max de 500€ et une rentabilité maximale
     MAX_INVEST = 500
     soluc_choice = brute_force(wallet, MAX_INVEST)
