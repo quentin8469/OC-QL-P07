@@ -1,5 +1,13 @@
-# import csv
+import csv
+# import os
 # import itertools
+
+def data_set_csv():
+    """ Open and read the csv file"""
+    with open('data_set/dataset0.csv', newline='') as csvfile:
+        reader = csv.reader(csvfile, delimiter=' ')
+        for row in reader:
+	        print (row)
 
 
 def main():
@@ -13,4 +21,5 @@ def main():
     pass
 
 if __name__ == "__main__":
-    main()
+    print('open')
+    data_set_csv()
