@@ -21,7 +21,15 @@ def make_combinations(wallet):
             all_combination.append(combis)
     return all_combination
 
+
+def find_best_invest(all_combis,max_invest):
+    """ try to find the best combation for the best gain"""
+    max_gain = 0
+    total_invest = 0
+    for action in all_combis:
+        print(action)
     
+   
 def main():
     max_invest = 500
     wallet = make_dict()
