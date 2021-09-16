@@ -32,7 +32,7 @@ $ pip3 install -r requirements.txt
 
 ## 3-Fonctionnement:
 * Fichier brute force:
-execution du programme : $ python "???".py <br>
+execution du programme : $ python algo_brut_force_dict.py <br>
 Cet algorithme va tester toutes les combinaisons possibles une à une et garder la meilleur (ce qui rend l'exécution très longue).
 
 * Fichier optimisé:
