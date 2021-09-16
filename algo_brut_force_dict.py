@@ -26,17 +26,33 @@ def make_combinations(wallet):
 def find_best_invest(all_combis,max_invest,wallet):
     """ try to find the best combation for the best gain"""
     max_gain = 0
-    total_invest = 0
+    #total_invest = 0
+    best_invest = []
     for combis in all_combis:
+        combi_gain = 0
+        total_invest = 0
         for combi in combis:
             action_price = int(wallet[combi][0])
             two_year_gain = int(wallet[combi][1])
-            total_gain = (action_price * two_year_gain)/100
-            time.sleep(5)
-            print(combi)
-            print(two_year_gain)
-            print(total_gain)
-    
+            action_gain = (action_price * two_year_gain)/100
+            combi_gain += action_gain
+            total_invest += action_price
+            #time.sleep(2)
+            #print(combi)
+            #print(two_year_gain)
+            #print(total_gain)
+        if total_invest <= max_invest and combi_gain > max_gain:
+            max_gain = combi_gain
+            best_invest = combis
+            
+        else:
+            pass
+        
+        # time.sleep(2)
+        # print("Gain max:", combi_gain)
+        # print("invest max:", total_invest)
+    print(max_gain)
+    print(best_invest)
    
 def main():
     max_invest = 500
