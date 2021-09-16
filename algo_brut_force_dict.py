@@ -16,6 +16,7 @@ def make_dict(datafile):
 def find_best_invest(max_invest,wallet):
     """ try to find the best combation for the best gain """
     max_gain = 0
+    all_invest = 0
     best_invest = []
     for i in range(len(wallet)):
         for combis in (combinations(wallet, i)):
@@ -29,10 +30,11 @@ def find_best_invest(max_invest,wallet):
                 total_invest += action_price
             if total_invest <= max_invest and combi_gain > max_gain:
                 max_gain = combi_gain
+                all_invest = total_invest
                 best_invest = combis
             else:
                 pass
-    return f'La meilleure combinaison d\'action est : {best_invest} \nPour un gain estimé de {max_gain}'
+    return f'La meilleure combinaison d\'action est: {best_invest} \nPour un gain estimé de: {max_gain}\nPour un investissement de:{all_invest}'
 
  
 def main():
