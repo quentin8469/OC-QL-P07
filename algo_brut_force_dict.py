@@ -34,7 +34,9 @@ def find_best_invest(max_invest,wallet):
                 best_invest = combis
             else:
                 pass
-    return f'La meilleure combinaison d\'action est: {best_invest} \nPour un gain estimé de: {max_gain}\nPour un investissement de:{all_invest}'
+    return f'La meilleure combinaison d\'action est: {best_invest}\n'\
+           f'Pour un gain estimé de: {max_gain} €\n'\
+           f'Pour un investissement de:{all_invest} €'
 
  
 def main():
@@ -47,7 +49,7 @@ def main():
     best_invest = find_best_invest(max_invest, wallet)
     print(best_invest)
     end_time = time.time()
-    print('temps d\'execution:' , (end_time - start_time))
+    print('Temps d\'execution:' , (end_time - start_time), 'secomdes')
     
 
 if __name__ == "__main__":
