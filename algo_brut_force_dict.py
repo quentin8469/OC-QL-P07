@@ -41,7 +41,8 @@ def find_best_invest(max_invest,wallet):
  
 def main():
     """ Principal function """
-    csv_file = 'dataset0'
+    csv_file = input('dataset0 ou dataset1_Python+P7 ou dataset2_Python+P7 :' )
+    #csv_file = 'dataset0'
     #csv_file = 'dataset1_Python+P7'
     max_invest = 500
     start_time = time.time()
