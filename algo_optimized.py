@@ -36,16 +36,34 @@ def glouton(wallet, max_invest):
     total_gain = 0
     total_invest = 0
     wallet_tri = sorted(wallet, key=lambda x:x.gain, reverse=True)
-    for wal in wallet_tri:
-        print(wal)
     for wallet in wallet_tri:
-        #print(wallet.gain)
         invest = total_invest + wallet.price
         if invest <= max_invest and wallet.gain >0:
             total_invest = invest
             total_gain += wallet.gain
-            best_combination.append(wallet.price)      
-        #print(wallet.name, total_invest, total_gain)
+            best_combination.append(str(wallet))     
+
+    return f'La meilleure combinaison d\'action est: {best_combination}\n'\
+           f'Pour un gain estimé de: {total_gain} €\n'\
+           f'Pour un investissement de:{total_invest} €'
+
+
+def glouton_two(wallet, max_invest):
+    """try to find a good invest"""
+    #trier les objets action par gain possible
+    best_combination = []
+    total_gain = 0
+    total_invest = 0
+    i = 0
+    wallet_tri = sorted(wallet, key=lambda x:x.profit, reverse=True)
+    while i < len(wallet):
+        invest = total_invest + wallet_tri[i].price
+        if invest <= max_invest:
+            total_invest = invest
+            total_gain += wallet_tri[i].gain
+            best_combination.append(str(wallet_tri[i]))
+        i +=1     
+
     return f'La meilleure combinaison d\'action est: {best_combination}\n'\
            f'Pour un gain estimé de: {total_gain} €\n'\
            f'Pour un investissement de:{total_invest} €'
@@ -69,10 +87,12 @@ def main():
     
     max_invest = 500        
     wallet = data_set_csv(csv_file)
-    #for wal in wallet:
-        #print(wal)
     opti_invest = glouton(wallet, max_invest)
     print(opti_invest)
+    opti_invest_two = glouton_two(wallet, max_invest)
+    print("----------------------------------------------")
+    print(opti_invest_two)
+    
 
 if __name__ == "__main__":
     """"""
