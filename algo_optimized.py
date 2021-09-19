@@ -27,8 +27,9 @@ def data_set_csv(datafile):
 def glouton(wallet, max_invest):
     """ try to find a good invest """
     #trier les objets action par gain possible
-    
-    pass
+    wallet_tri = sorted(wallet, key=lambda x:x.gain, reverse=True)
+    for tes in wallet_tri:
+        print('test tri glouton:', tes.name , tes.price, tes.gain)
 
 
 def main():
@@ -36,12 +37,7 @@ def main():
     max_invest = 500
     csv_file = input('dataset0 ou dataset1_Python+P7 ou dataset2_Python+P7 :' )
     wallet = data_set_csv(csv_file)
-    for wall in wallet:
-        print(wall)
     opti_invest = glouton(wallet, max_invest)
-    print(opti_invest)
-    #print (2**1000)
-    #print((2**21)-(2**20))
 
 if __name__ == "__main__":
     """"""
