@@ -12,10 +12,10 @@ def main():
         algo = input("Entrez votre choix et appuyez sur entrée: ")
         print("----------------------------------------------")
         if algo == '1':
-            print('Le programme brut force vient de débuter')
+            print('Vous avez choisi le programme Brute force')
             algo_brut_force_dict.main()
         elif algo == '2':
-            print('Le programme optimized vient de débuter')
+            print('Vous avez choisi le programme Optimized')
             algo_optimized.main()
         elif algo == '3':
             exit
