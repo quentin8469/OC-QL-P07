@@ -41,9 +41,19 @@ def find_best_invest(max_invest,wallet):
  
 def main():
     """ Principal function """
-    csv_file = input('dataset0 ou dataset1_Python+P7 ou dataset2_Python+P7 :' )
-    #csv_file = 'dataset0'
-    #csv_file = 'dataset1_Python+P7'
+    print("----------------------------------------------")
+    print("             Programme Optimized              ")
+    print("----------------------------------------------")
+    print("1:dataset0   2:dataset1_Python+P7   3:dataset2_Python+P7")
+        
+    algo = input("Entrez votre choix et appuyez sur entrée: ")
+    if algo == '1':
+        csv_file = 'dataset0'
+    elif algo == '2':
+        csv_file = 'dataset1_Python+P7'
+    elif algo == '3':
+        csv_file = 'dataset2_Python+P7'
+    
     max_invest = 500
     start_time = time.time()
     wallet = make_dict(csv_file)
