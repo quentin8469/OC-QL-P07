@@ -35,7 +35,7 @@ def glouton(wallet, max_invest):
     best_combination = []
     total_gain = 0
     total_invest = 0
-    wallet_tri = sorted(wallet, key=lambda x:x.gain, reverse=True)
+    wallet_tri = sorted(wallet, key=lambda x:x.profit, reverse=True)
     for wallet in wallet_tri:
         invest = total_invest + wallet.price
         if invest <= max_invest and wallet.gain >0:
