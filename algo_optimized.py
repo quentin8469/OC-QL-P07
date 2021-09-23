@@ -26,6 +26,7 @@ def data_set_csv(datafile):
 	            pass
             else:
                 wallet.append(Action(row[0], float(row[1]), float(row[2])))
+                
     return wallet
 
 
@@ -68,6 +69,40 @@ def glouton_two(wallet, max_invest):
            f'Pour un gain estimé de: {total_gain} €\n'\
            f'Pour un investissement de:{total_invest} €'
 
+# def optimized_algo(wallet, max_invest):
+#     """"""
+#     invest = int(max_invest)
+#     nb_action = len(wallet)
+#     mat = [[0 for x in range(invest + 1)] for x in range(nb_action + 1)]
+#     for item in range(1, nb_action+1, 1):
+#         for euro in range(1, invest + 1):
+#             if wallet[item-1].price <= euro:
+#                 mat[item][euro] = max(wallet[item-1].profit + mat[item-1][euro-wallet[item-1].price], mat[item-1][euro])
+#             else:
+#                 mat[item][euro] = mat[item-1][euro]
+    
+#     p = int(max_invest)
+#     n = len(wallet)
+#     combinaison = []
+#     combi = []
+#     total_gain = 0
+#     total_invest = 0
+    
+#     while p >=0 and n>=0:
+#         action_list = wallet[n-1]
+#         if mat[n][p] == mat[n-1][p-action_list.price] + action_list.profit:
+#             combinaison.append(action_list)
+#             p -= action_list.price
+#         n -= 1
+    
+#     for action in combinaison:
+#         total_gain += action.gain
+#         total_invest += action.price
+#         combi.append(action.name)
+    
+#     return f'La meilleure combinaison d\'action est: {combi}\n'\
+#            f'Pour un gain estimé de: {total_gain} €\n'\
+#            f'Pour un investissement de:{total_invest} €'
 
 def main():
     """"""
@@ -85,7 +120,7 @@ def main():
     elif algo == '3':
         csv_file = 'dataset2_Python+P7'
     
-    max_invest = 500        
+    max_invest = 500
     wallet = data_set_csv(csv_file)
     print("------------glouton_one-------------------")
     algo_optimized_one = glouton(wallet, max_invest)
@@ -99,6 +134,12 @@ def main():
     print("----------------------------------------------")
     print("--------------END glouton_two---------------------")
     print("----------------------------------------------")
+    # print("------------sac à dos-------------------")
+    # print("----------------------------------------------")
+    # sac_a_dos = optimized_algo(wallet, max_invest)
+    # print(sac_a_dos)
+    # print("--------------END sac à dos---------------------")
+    # print("----------------------------------------------")
 
 
 if __name__ == "__main__":
