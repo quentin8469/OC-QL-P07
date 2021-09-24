@@ -22,7 +22,7 @@ def data_set_csv(datafile):
     with open(f'data_set/{datafile}.csv', newline='') as csvfile:
         reader = csv.reader(csvfile)
         for row in reader:
-            if float(row[1]) <= 1.0 or float(row[2]) <= 1.0:
+            if float(row[1]) <= 0.0 or float(row[2]) <= 0.0:
 	            del(row)    
             else:
                 wallet.append(Action(row[0], float(row[1]), float(row[2])))
@@ -32,10 +32,10 @@ def data_set_csv(datafile):
 
 def algo_sac_a_dos(wallet, max_invest):
     """"""
-    #je veux créer une matrice vide
-    #je veux remplir ma matrice( liste de liste)
-    #je veux comparer les possibilitées
-    #je veus recuperer la meilleures possibilitées
+    #je veux créer une matrice vide:
+    #je veux remplir ma matrice( liste de liste):
+    #je veux comparer les possibilitées:
+    #je veus recuperer la meilleures possibilitées:
     #je veux renvoyer le resultat
     pass
 
@@ -55,7 +55,7 @@ def main():
     elif algo == '3':
         csv_file = 'dataset2_Python+P7'
     
-    max_invest = 500 #conversion euros en centimes *100
+    max_invest = 50000 #conversion euros en centimes *100
     wallet = data_set_csv(csv_file)
     for x in wallet:
         print(x)
