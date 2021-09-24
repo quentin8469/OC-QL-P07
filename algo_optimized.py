@@ -30,62 +30,14 @@ def data_set_csv(datafile):
     return wallet
 
 
-def optimized_algo(wallet, max_invest):
+def algo_sac_a_dos(wallet, max_invest):
     """"""
-    
-    #nb_action = len(wallet)
-    # creation de la matrice,initialisation à 0,les +1 ajoute ligne et colonne à 0
-    mat = [[0 for x in range(max_invest + 1)] for x in range(len(wallet) )]
-    print(len(mat))
-    #je parcours les actions(lignes)
-    for item in range(1, len(wallet) + 1):
-        #print(item)
-        #print(mat[-10][-10])
-        # pour chaque item je parcours leurs prix (colonnes)
-        for euro in range(1, max_invest + 1):
-            #print(mat)
-            #print(euro)
-            # si mon prix est inferieur a max_invest 
-            if wallet[item - 1].price <= euro:
-                #alors je compars le resultat optimisé de la ligne d'avant avec le resultat courant
-                mat[item][euro] = max(wallet[item - 1].profit + mat[item - 1][euro - wallet[item - 1].price], mat[item - 1][euro])
-                #print(mat[item][euro])
-            else:
-                # si la nouvelle action depasse le max invest, alors je garde la ligne d'avant
-                mat[item][euro] = mat[item - 1][euro]
-                
-    
-    # Retrouver les éléments en fonction de la somme
-    # on pars de invest et n qui correspond a la derniere case de la matrice
-    invest = max_invest
-    n = len(wallet)
-    combinaison = []
-    
-    # combi = []
-    # total_gain = 0
-    # total_invest = 0
-    # tant que invest est sup à 0 et que la liste est sup len(wallet)
-    while invest >= 0 and n >= 0:
-        #on prend le dernier element de la matrice
-        action_list = wallet[n-1]
-        #print(wallet[n-1])
-        if mat[n][invest] == mat[n-1][invest- action_list.price + action_list.profit]:
-            print('bob')
-            # on ajoute l'action choisie
-            combinaison.append(action_list.name)
-            #print(combi)
-            invest -= action_list.price
-            
-        n -= 1
-    
-    # for action in combinaison:
-    #     total_gain += action.gain
-    #     total_invest += action.price
-    #     combi.append(action.name)
-    
-    return f'La meilleure combinaison d\'action est: {combi}\n'\
-           f'Pour un gain estimé de: {total_gain} €\n'\
-           f'Pour un investissement de:{total_invest} €'
+    #je veux créer une matrice vide
+    #je veux remplir ma matrice( liste de liste)
+    #je veux comparer les possibilitées
+    #je veus recuperer la meilleures possibilitées
+    #je veux renvoyer le resultat
+    pass
 
 def main():
     """"""
@@ -107,12 +59,12 @@ def main():
     wallet = data_set_csv(csv_file)
     for x in wallet:
         print(x)
-    # # print("------------sac à dos-------------------")
-    # # print("----------------------------------------------")
-    # sac_a_dos = optimized_algo(wallet, max_invest)
-    # # print(sac_a_dos)
-    # # print("--------------END sac à dos---------------------")
-    # # print("----------------------------------------------")
+    print("------------sac à dos-------------------")
+    print("----------------------------------------------")
+    sac_a_dos = algo_sac_a_dos(wallet, max_invest)
+    print(sac_a_dos)
+    print("--------------END sac à dos---------------------")
+    print("----------------------------------------------")
 
 
 if __name__ == "__main__":
