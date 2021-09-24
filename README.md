@@ -40,8 +40,8 @@ Cet algorithme va ???
 * Fichier optimized:
 Cet algorithme va ???
 
-Pour executer le programme: python main.py
-    * Choisisez le script que vous souhaitez lancer.
+Pour executer le programme: python main.py <br>
+    * Choisisez le script que vous souhaitez lancer.<br>
     * Choississez le fichier de données à lire.
 
 ***
