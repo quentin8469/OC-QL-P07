@@ -8,8 +8,8 @@ class Action:
     """ Creation de l'objet action"""
     def __init__(self, name, price, profit):
         self.name = name
-        self.price = int(float(price))
-        self.profit = int(float(profit))
+        self.price = int(price)
+        self.profit = int(profit)
         self.gain = self.price*self.profit/100
         
     def __str__(self):
@@ -29,15 +29,49 @@ def data_set_csv(datafile):
                 
     return wallet
 
+def get_matrix(wallet, max_invest):
+    """ Generate a empty matrix"""
+    matrix = []
+    for largeur in range(0, max_invest +1):
+        tableau_largeur = []
+        for hauteur in range(0, len(wallet)+1):
+            tableau_largeur.append(0)
+        matrix.append(tableau_largeur)
+        
+    return matrix
 
+    
 def algo_sac_a_dos(wallet, max_invest):
     """"""
-    #je veux créer une matrice vide:
-    #je veux remplir ma matrice( liste de liste):
-    #je veux comparer les possibilitées:
-    #je veus recuperer la meilleures possibilitées:
-    #je veux renvoyer le resultat
-    pass
+    #création de ma matrice:
+        #je veux crée un tableau de largeur 'max invest' et de hauteur 'nombre d'actions'
+    #retourne un matrice avec que des zéros   
+    
+    
+    #une fois ma matrice crée:
+    #pour ma hauteur comprise entre 0 et 'nombre d'actions'
+        #pour ma largeur comprise entre 0 et max_invest:
+            #si le prix de mon action est inferieur ou égal à ma largeur ( largeur = au niveau d'investissement de ma boucle ):
+                    #mon meilleur bénéfice pour l'investissement de ma boucle = bénéfice de l'action additionné au bénéfice de l'action précédente que je peux acheter avec le reste de l'investissement
+                    #je vais comparer le bénéfice actuel avec le bénéfice possible précèdent pour le même investissement et j'insert le meilleurs résultat dans mon tableau.  
+            
+            #si mon prix est strictement supérieur:
+                #je prend la valeur précédente de l'investissement donné et je l'ajoute a mon tableau
+                
+    matrice = get_matrix(wallet, max_invest)
+    print('matrice vide', matrice)
+    for action in range(1, len(wallet) + 1):
+         #print('action',action)
+         for invest in range(1, max_invest + 1):
+            #print('invest', invest)
+            if wallet[action-1].price <= invest:
+                print('action', wallet[action-1].name, wallet[action-1].price)
+            #     max_profit = wallet[action-1].name
+                #print(max_profit)
+            # else:
+            #     matrice[action][invest]  = matrice[action-1][invest]  
+    
+    return matrice
 
 def main():
     """"""
@@ -55,14 +89,17 @@ def main():
     elif algo == '3':
         csv_file = 'dataset2_Python+P7'
     
-    max_invest = 50000 #conversion euros en centimes *100
+    max_invest = 10 #conversion euros en centimes *100
     wallet = data_set_csv(csv_file)
-    for x in wallet:
-        print(x)
+    #for x in wallet:
+    #    print(x)
     print("------------sac à dos-------------------")
     print("----------------------------------------------")
     sac_a_dos = algo_sac_a_dos(wallet, max_invest)
-    print(sac_a_dos)
+    #print(len(sac_a_dos))
+    #print(sac_a_dos)
+    # matrix= get_matrix(wallet, max_invest)
+    # print(matrix)
     print("--------------END sac à dos---------------------")
     print("----------------------------------------------")
 
