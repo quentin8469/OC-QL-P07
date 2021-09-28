@@ -29,6 +29,7 @@ def data_set_csv(datafile):
                 
     return wallet
 
+
 def get_matrix(wallet, max_invest):
     """ Generate a empty matrix"""
     matrix = []
@@ -43,55 +44,29 @@ def get_matrix(wallet, max_invest):
     
 def algo_sac_a_dos(wallet, max_invest):
     """"""
-    #création de ma matrice:
-        #je veux crée un tableau de largeur 'max invest' et de hauteur 'nombre d'actions'
-    #retourne un matrice avec que des zéros   
-    
-    
-    #une fois ma matrice crée:
-    #pour ma hauteur comprise entre 0 et 'nombre d'actions'
-        #pour ma largeur comprise entre 0 et max_invest:
-            #si le prix de mon action est inferieur ou égal à ma largeur ( largeur = au niveau d'investissement de ma boucle ):
-                    #mon meilleur bénéfice pour l'investissement de ma boucle = bénéfice de l'action additionné au bénéfice de l'action précédente que je peux acheter avec le reste de l'investissement
-                    #je vais comparer le bénéfice actuel avec le bénéfice possible précèdent pour le même investissement et j'insert le meilleurs résultat dans mon tableau.  
-            
-            #si mon prix est strictement supérieur:
-                #je prend la valeur précédente de l'investissement donné et je l'ajoute a mon tableau
-                
-    matrice = get_matrix(wallet, max_invest)
-    
-    # print('matrice vide', matrice)
-    # for action in range(1, len(wallet) + 1):
-    #      #print('action',action)
-    #      for invest in range(1, max_invest + 1):
-    #         #print('invest', invest)
-    #         if wallet[action-1].price <= invest:
-    #             max_profit = wallet[action-1].profit + matrice[invest][wallet[action-1].profit]
-    #             print('max_profit', max_profit) 
-    #             autre_profit = matrice[invest][wallet[action-1].profit]
-    #             print('autre_profit', autre_profit)
-    #             matrice[invest][action] = max(matrice[invest-1][action], max_profit)
-    #             print(matrice[invest][action])
-    #         else:
-    #             matrice[invest][action] = matrice[invest-1][action] 
-    #             print('matrice[invest][action]', matrice[invest][action])
-    
-    print('matrice vide', matrice) 
+    matrice = get_matrix(wallet, max_invest) 
     for action in range(1, len(wallet)+1):
-        print('action',action)
         for invest in range(1, max_invest+1):
-            print('invest', invest)
             if wallet[action-1].price <= invest:
                 best_pos = wallet[action-1].profit + matrice[action-1][invest-wallet[action-1].price]
-                print('wallet[action-1].profit', wallet[action-1].profit)
-                print('matrice[action-1][invest-wallet[action-1].price]', matrice[action-1][invest-wallet[action-1].price])
-                print('best_pos', best_pos) 
                 matrice[action][invest] = max(best_pos, matrice[action-1][invest])
-                print(matrice[action][invest])
             else:
                 matrice[action][invest] = matrice[action-1][invest]
     return matrice
     
+def best_option(wallet, max_invest, matrice):
+    """"""
+    k = max_invest
+    n = len(wallet)
+    optimized_portfolio = []
+    
+    while k >= 0 and n >= 0:
+        e = wallet[n-1]
+        if matrice[n][k] == matrice[n-1][k- e.price]+ e.profit:
+            optimized_portfolio.append(e)
+            k -= e.price
+        n -=1
+    return optimized_portfolio
     
 
 def main():
@@ -115,10 +90,9 @@ def main():
     print("------------sac à dos-------------------")
     print("----------------------------------------------")
     sac_a_dos = algo_sac_a_dos(wallet, max_invest)
-    #print(len(sac_a_dos))
     print('mon resultat', sac_a_dos)
-    # matrix= get_matrix(wallet, max_invest)
-    # print(matrix)
+    best_portfolio = best_option(wallet, max_invest, sac_a_dos)
+    print('mon resultat final', best_portfolio)
     print("--------------END sac à dos---------------------")
     print("----------------------------------------------")
 
