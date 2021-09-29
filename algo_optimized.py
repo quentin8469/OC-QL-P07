@@ -44,6 +44,7 @@ def get_matrix(wallet, max_invest):
 def algo_sac_a_dos(wallet, max_invest):
     """"""
     matrice = get_matrix(wallet, max_invest)
+    
     for action in range(1, len(wallet)+1):
         for invest in range(1, max_invest+1):
             if wallet[action-1].price <= invest:
@@ -56,21 +57,33 @@ def algo_sac_a_dos(wallet, max_invest):
 
 def best_option(wallet, max_invest, matrice):
     """"""
-
-    n = len(wallet)
+    invest = max_invest
+    len_wallet = len(wallet)
     optimized_portfolio = []
 
-    while max_invest >= 0 and n >= 0:
-        action = wallet[n-1]
-
-        if matrice[n][max_invest] == matrice[n-1][max_invest-action.price] + action.profit:
-            print(matrice[n][max_invest])
-        #     print(matrice[n][max_invest])
-        #     optimized_portfolio.append(e)
-        #     k -= e.price
-        # n -=1
+    while invest >= 0 and len_wallet >= 0:
+        action = wallet[len_wallet-1]
+        if matrice[len_wallet][invest] == matrice[len_wallet-1][invest- action.price] + action.profit:
+            optimized_portfolio.append(action)
+            invest -= action.price
+            
+        len_wallet -=1
     return optimized_portfolio
 
+def affichage_solution(best_portfolio):
+    """"""
+    combi = []
+    total_gain = 0
+    total_invest = 0
+    
+    for action in best_portfolio:
+        total_gain += action.gain
+        total_invest += action.price
+        combi.append(action.name)
+    
+    return f'La meilleure combinaison d\'action est: {combi}\n'\
+           f'Pour un gain estimé de: {total_gain} €\n'\
+           f'Pour un investissement de:{total_invest} €'
 
 def main():
     """"""
@@ -88,14 +101,14 @@ def main():
     elif algo == '3':
         csv_file = 'dataset2_Python+P7'
 
-    max_invest = 50 #conversion euros en centimes *100
+    max_invest = 500 #conversion euros en centimes *100
     wallet = data_set_csv(csv_file)
     print("------------sac à dos-------------------")
     print("----------------------------------------------")
     sac_a_dos = algo_sac_a_dos(wallet, max_invest)
-    #print('mon resultat', sac_a_dos)
     best_portfolio = best_option(wallet, max_invest, sac_a_dos)
-    print('mon resultat final', best_portfolio)
+    solution = affichage_solution(best_portfolio)
+    print(solution)
     print("--------------END sac à dos---------------------")
     print("----------------------------------------------")
 
