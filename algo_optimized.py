@@ -41,7 +41,7 @@ def get_matrix(wallet, max_invest):
     return matrix
 
 
-def algo_sac_a_dos(wallet, max_invest):
+def algo_opti(wallet, max_invest):
     """"""
     matrice = get_matrix(wallet, max_invest)
     
@@ -68,11 +68,13 @@ def best_option(wallet, max_invest, matrice):
             invest -= action.price
             
         len_wallet -=1
+    
     return optimized_portfolio
 
 def affichage_solution(best_portfolio):
     """"""
     combi = []
+    combi_gain =[]
     total_gain = 0
     total_invest = 0
     
@@ -80,10 +82,12 @@ def affichage_solution(best_portfolio):
         total_gain += action.gain
         total_invest += action.price
         combi.append(action.name)
+        combi_gain.append(action.gain)
     
     return f'La meilleure combinaison d\'action est: {combi}\n'\
            f'Pour un gain estimé de: {total_gain} €\n'\
-           f'Pour un investissement de:{total_invest} €'
+           f'Pour un investissement de:{total_invest} €\n'\
+           f'La meilleure combinaison d\'action est: {combi_gain}\n'\
 
 def main():
     """"""
@@ -101,11 +105,11 @@ def main():
     elif algo == '3':
         csv_file = 'dataset2_Python+P7'
 
-    max_invest = 500 #conversion euros en centimes *100
+    max_invest = 5000 #conversion euros en centimes *100
     wallet = data_set_csv(csv_file)
     print("------------sac à dos-------------------")
     print("----------------------------------------------")
-    sac_a_dos = algo_sac_a_dos(wallet, max_invest)
+    sac_a_dos = algo_opti(wallet, max_invest)
     best_portfolio = best_option(wallet, max_invest, sac_a_dos)
     solution = affichage_solution(best_portfolio)
     print(solution)
