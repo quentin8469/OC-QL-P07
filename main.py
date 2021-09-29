@@ -7,12 +7,12 @@ def main():
     """"""
     algo = '0'
     while algo != '4':
-        print("----------------------------------------------")
-        print("               AlgoInvestTrade                ")
-        print("----------------------------------------------")
+        print("------------------------------------------------------")
+        print("                   AlgoInvestTrade                    ")
+        print("------------------------------------------------------")
         print("1:Brute_Force     2:Glouton     3:Optimized     4:Exit")
-        algo = input("Entrez votre choix et appuyez sur entrée: ")
-        print("----------------------------------------------")
+        algo = input("Entrez votre choix et appuyez sur entrée:      ")
+        print("------------------------------------------------------")
         if algo == '1':
             print('Vous avez choisi le programme Brute force')
             algo_brut_force_dict.main()
