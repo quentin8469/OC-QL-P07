@@ -82,7 +82,7 @@ def display_solution(best_portfolio):
     """ view to display the optimized result"""
     
     combi = []
-    combi_gain =[]
+
     total_gain = 0
     total_invest = 0
     
@@ -90,7 +90,7 @@ def display_solution(best_portfolio):
         total_gain += action.gain
         total_invest += action.price
         combi.append(action.name)
-        combi_gain.append(action.gain)
+    
     
     return f'La meilleure combinaison d\'action est: {combi}\n'\
            f'Pour un gain estimé de: {total_gain/1000000} €\n'\
@@ -122,7 +122,7 @@ def main():
     solution = display_solution(best_portfolio)
     print(solution)
     end_time = time.time()
-    print('Temps d\'execution:' , (end_time - start_time), 'secondes')
+    print('Temps d\'execution:' , (end_time - start_time), 'secodes')
     print("--------------END sac à dos---------------------")
 
 
