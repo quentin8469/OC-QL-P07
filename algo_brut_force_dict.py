@@ -60,7 +60,7 @@ def main():
     best_invest = find_best_invest(max_invest, wallet)
     print(best_invest)
     end_time = time.time()
-    print('Temps d\'execution:' , (end_time - start_time), 'secomdes')
+    print('Temps d\'execution:' , (end_time - start_time), 'secondes')
     
 
 if __name__ == "__main__":
