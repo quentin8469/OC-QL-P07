@@ -46,27 +46,6 @@ def glouton(wallet, max_invest):
            f'Pour un investissement de:{total_invest} €'
 
 
-def glouton_two(wallet, max_invest):
-    """try to find a good invest"""
-    #trier les objets action par gain possible
-    best_combination = []
-    total_gain = 0
-    total_invest = 0
-    i = 0
-    wallet_tri = sorted(wallet, key=lambda x:x.profit, reverse=True)
-    while i < len(wallet):
-        invest = total_invest + wallet_tri[i].price
-        if invest <= max_invest:
-            total_invest = invest
-            total_gain += wallet_tri[i].gain
-            best_combination.append(str(wallet_tri[i]))
-        i +=1     
-
-    return f'La meilleure combinaison d\'action est: {best_combination}\n'\
-           f'Pour un gain estimé de: {total_gain} €\n'\
-           f'Pour un investissement de:{total_invest} €'
-
-
 def main():
     """"""
     
@@ -88,16 +67,11 @@ def main():
     print("------------glouton_one-------------------")
     algo_glouton_one = glouton(wallet, max_invest)
     print(algo_glouton_one)
-    print("----------------------------------------------")
+    
     print("--------------END glouton_one---------------------")
-    print("----------------------------------------------")
-    print("------------glouton_two-------------------")
-    opti_glouton_two = glouton_two(wallet, max_invest)
-    print(opti_glouton_two)
-    print("----------------------------------------------")
-    print("--------------END glouton_two---------------------")
-
-
+    
+    
+    
 if __name__ == "__main__":
     """"""
     main()
