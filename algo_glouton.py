@@ -1,8 +1,9 @@
 import csv
+import time
 
 
 class Action:
-    """ Creation de l'objet action"""
+    """ Create the Action object"""
     def __init__(self, name, price, profit):
         self.name = name
         self.price = price
@@ -15,7 +16,7 @@ class Action:
 
 
 def data_set_csv(datafile):
-    """Open and read the csv file"""
+    """Open and read the csv file for create a list of action object"""
     wallet =[]
     with open(f'data_set/{datafile}.csv', newline='') as csvfile:
         reader = csv.reader(csvfile)
@@ -29,8 +30,8 @@ def data_set_csv(datafile):
 
 
 def glouton(wallet, max_invest):
-    """try to find a good invest"""
-    #trier les objets action par gain possible
+    """ Sorting wallet by profit """
+    
     best_combination = []
     total_gain = 0
     total_invest = 0
@@ -67,9 +68,11 @@ def main():
     max_invest = 500 
     wallet = data_set_csv(csv_file)
     print("------------glouton_one-------------------")
-    algo_glouton_one = glouton(wallet, max_invest)
-    print(algo_glouton_one)
-    
+    start_time = time.time()
+    algo_glouton = glouton(wallet, max_invest)
+    print(algo_glouton)
+    end_time = time.time()
+    print('Temps d\'execution:' , (end_time - start_time), 'secondes')
     print("--------------END glouton_one---------------------")
     
     
