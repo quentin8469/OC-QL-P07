@@ -10,7 +10,8 @@ class Action:
         self.gain = self.price*self.profit/100
         
     def __str__(self):
-        return f'Name: {self.name}, Price: {self.price}, Profit: {self.profit}, Gain: {self.gain}'
+        return f'Name: {self.name}, Price: {self.price}, Profit: {self.profit},'\
+               f'Gain: {self.gain}'
 
 
 def data_set_csv(datafile):
@@ -39,11 +40,12 @@ def glouton(wallet, max_invest):
         if invest <= max_invest and wallet.gain >0:
             total_invest = invest
             total_gain += wallet.gain
-            best_combination.append(str(wallet))     
+            best_combination.append(wallet.name)
 
     return f'La meilleure combinaison d\'action est: {best_combination}\n'\
            f'Pour un gain estimé de: {total_gain} €\n'\
            f'Pour un investissement de:{total_invest} €'
+
 
 
 def main():
