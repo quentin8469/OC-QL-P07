@@ -1,10 +1,11 @@
 import csv
-
+import time
 
 
 
 class Action:
-    """ Creation de l'objet action"""
+    """ Create the Action object"""
+    
     def __init__(self, name, price, profit):
         self.name = name
         self.price = int(round(float(price)*100))
@@ -12,11 +13,13 @@ class Action:
         self.gain = int(((self.price*self.profit)/100)*100)
 
     def __str__(self):
-        return f'Name: {self.name}, Price: {self.price}, Profit: {self.profit}, Gain: {self.gain}'
+        return f'Name: {self.name}, Price: {self.price}, Profit: {self.profit}'\
+               f', Gain: {self.gain}'
 
 
 def data_set_csv(datafile):
-    """Open and read the csv file"""
+    """Open and read the csv file for create a list of action object"""
+    
     wallet =[]
     with open(f'data_set/{datafile}.csv', newline='') as csvfile:
         reader = csv.reader(csvfile)
@@ -31,6 +34,7 @@ def data_set_csv(datafile):
 
 def get_matrix(wallet, max_invest):
     """ Generate a empty matrix"""
+    
     matrix = []
     for line in range(0, len(wallet)+1):
         tableau_largeur = []
@@ -42,7 +46,8 @@ def get_matrix(wallet, max_invest):
 
 
 def algo_opti(wallet, max_invest):
-    """"""
+    """ filling the empty matrix with the best gain possible"""
+    
     matrice = get_matrix(wallet, max_invest)
     
     for action in range(1, len(wallet)+1):
@@ -56,7 +61,8 @@ def algo_opti(wallet, max_invest):
 
 
 def best_option(wallet, max_invest, matrice):
-    """"""
+    """ Search the best optimized action solution in the matrix"""
+    
     invest = max_invest
     len_wallet = len(wallet)
     optimized_portfolio = []
@@ -71,8 +77,10 @@ def best_option(wallet, max_invest, matrice):
     
     return optimized_portfolio
 
-def affichage_solution(best_portfolio):
-    """"""
+
+def display_solution(best_portfolio):
+    """ view to display the optimized result"""
+    
     combi = []
     combi_gain =[]
     total_gain = 0
@@ -87,6 +95,7 @@ def affichage_solution(best_portfolio):
     return f'La meilleure combinaison d\'action est: {combi}\n'\
            f'Pour un gain estimé de: {total_gain/1000000} €\n'\
            f'Pour un investissement de:{total_invest/100} €\n'\
+
 
 def main():
     """"""
@@ -107,15 +116,17 @@ def main():
     max_invest = 50000 #conversion euros en centimes *100
     wallet = data_set_csv(csv_file)
     print("------------sac à dos-------------------")
-    print("----------------------------------------------")
+    start_time = time.time()
     sac_a_dos = algo_opti(wallet, max_invest)
     best_portfolio = best_option(wallet, max_invest, sac_a_dos)
-    solution = affichage_solution(best_portfolio)
+    solution = display_solution(best_portfolio)
     print(solution)
+    end_time = time.time()
+    print('Temps d\'execution:' , (end_time - start_time), 'secondes')
     print("--------------END sac à dos---------------------")
 
 
 
 if __name__ == "__main__":
-    """"""
+    
     main()
