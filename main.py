@@ -10,7 +10,7 @@ def main():
         print("------------------------------------------------------")
         print("                   AlgoInvestTrade                    ")
         print("------------------------------------------------------")
-        print("1:Brute_Force     2:Glouton     3:Optimized     4:Exit")
+        print("1:Brute_Force     2:Glouton     3:Dynamique     4:Exit")
         algo = input("Entrez votre choix et appuyez sur entrée:      ")
         print("------------------------------------------------------")
         if algo == '1':
@@ -20,7 +20,7 @@ def main():
             print('Vous avez choisi le programme Glouton')
             algo_glouton.main()
         elif algo == '3':
-            print('Vous avez choisi le programme Optimized')
+            print('Vous avez choisi le programme Dynamique')
             algo_optimized.main()
         elif algo == '4':
             exit
