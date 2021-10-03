@@ -34,9 +34,9 @@ $ pip3 install -r requirements.txt
 
 Pour executer le programme: python main.py <br>
     * Choisisez le script que vous souhaitez lancer.<br>
-    1-force brute  2-glouton  3-dynamique
-    * Choississez le fichier de données à lire.
-    1- dataset0   2-dataset1   3-dataset2
+    1-force brute  2-glouton  3-dynamique<br>
+    * Choississez le fichier de données à lire.<br>
+    1- dataset0   2-dataset1   3-dataset2<br>
 
 ***
 Créer un rapport flake8 :  
