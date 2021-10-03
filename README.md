@@ -32,10 +32,10 @@ $ pip3 install -r requirements.txt
 
 ## 3-Fonctionnement:
 
-Pour executer le programme: python main.py <br>
-    * Choisisez le script que vous souhaitez lancer.<br>
+Pour executer le programme: python main.py: <br>
+    * Choisisez le script que vous souhaitez lancer:<br>
     1-force brute  2-glouton  3-dynamique<br>
-    * Choississez le fichier de données à lire.<br>
+    * Choississez le fichier de données à lire:<br>
     1- dataset0   2-dataset1   3-dataset2<br>
 
 ***
