@@ -37,12 +37,12 @@ def find_best_invest(max_invest,wallet):
     return f'La meilleure combinaison d\'action est: {best_invest}\n'\
            f'Pour un gain estimé de: {max_gain} €\n'\
            f'Pour un investissement de:{all_invest} €'
-
- 
+    
+     
 def main():
     """ Principal function """
     print("----------------------------------------------")
-    print("             Programme Optimized              ")
+    print("             Programme Force Brute             ")
     print("----------------------------------------------")
     print("1:dataset0   2:dataset1_Python+P7   3:dataset2_Python+P7")
         
