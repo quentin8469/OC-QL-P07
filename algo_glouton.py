@@ -53,7 +53,7 @@ def main():
     """"""
     
     print("----------------------------------------------")
-    print("             Programme Optimized              ")
+    print("             Programme Glouton                ")
     print("----------------------------------------------")
     print("1:dataset0   2:dataset1_Python+P7   3:dataset2_Python+P7")
         
