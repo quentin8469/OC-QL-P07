@@ -31,18 +31,12 @@ $ pip3 install -r requirements.txt
 
 
 ## 3-Fonctionnement:
-* Fichier brute force:
-Cet algorithme va tester toutes les combinaisons possibles une à une et garder la meilleur (ce qui rend l'exécution très longue).
-
-* Fichier gloton:
-Cet algorithme va ???
-
-* Fichier optimized:
-Cet algorithme va ???
 
 Pour executer le programme: python main.py <br>
     * Choisisez le script que vous souhaitez lancer.<br>
+    1-force brute  2-glouton  3-dynamique
     * Choississez le fichier de données à lire.
+    1- dataset0   2-dataset1   3-dataset2
 
 ***
 Créer un rapport flake8 :  
